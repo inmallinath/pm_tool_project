@@ -3,9 +3,32 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'home#index'
+
   get '/home' => 'home#index'
   get '/about' => 'home#about'
+
+  # CREATE and NEW
+  get '/projects/new' => 'projects#new', as: :new_project
+  post '/projects' => 'projects#create', as: :projects
+
+  # LIST and SHOW
+  get '/projects/:id' => 'projects#show', as: :project
+  get '/projects' => 'projects#index'
+
+  # EDIT AND UPDATE
+  get '/projects/:id/edit' => 'projects#edit', as: :edit_project
+  patch '/projects/:id' => 'projects#update'
+
+  # DELETE
+  delete '/projects/:id' => 'projects#destroy'
+  # get '/projects' => 'projects#index'
+
+  # Show the index as a list and on selection of a project show its details
+
+
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
